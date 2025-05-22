@@ -19,19 +19,17 @@ A collection of hardened shell scripts and modular Bash libraries for managing P
 - Reusable libraries for assertions, structured logging, and shell behavior
 - Consistent trap handling on `ERR`, `EXIT`, `INT`, `TERM`
 
-## 🔧 Installation
+## 📦 Installation
 
 ```shell
-sudo mkdir -p /usr/local/lib
-sudo cp lib/*.sh /usr/local/lib/
-sudo chmod 644 /usr/local/lib/*.sh
-sudo chown root:root /usr/local/lib/*.sh
-
-sudo cp sbin/*.sh /usr/local/sbin/
-sudo chmod 755 /usr/local/sbin/*.sh
+make install
 ```
 
-## 📦 Requirements
+- Please don't run `install.sh` directly.
+- Only use the make targets.
+- Run `make help` for more info.
+
+## Requirements
 
 - Proxmox VE (or any system using zfs-import-scan.service)
 - Systemd
