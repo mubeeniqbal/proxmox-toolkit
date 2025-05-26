@@ -3,7 +3,7 @@
 SHELL := /bin/bash
 .DEFAULT_GOAL := help
 
-.PHONY: help verify install reinstall clean uninstall
+.PHONY: help verify install reinstall reset clean uninstall
 
 # Show usage help.
 help:
@@ -13,6 +13,7 @@ help:
 	@echo 'make verify      # Run environment checks (must be root)'
 	@echo 'make install     # Copy scripts to /usr/local/{lib,sbin}'
 	@echo 'make reinstall   # Remove all scripts and install again'
+	@echo 'make reset       # Revert system to default state'
 	@echo 'make clean       # Remove all scripts'
 	@echo 'make uninstall   # Same as clean'
 	@echo ''
@@ -24,6 +25,10 @@ install: verify
 	@bash install.sh
 
 reinstall: uninstall install
+
+reset:
+	@bash /usr/local/sbin/zfs-import-scan-enable.sh
+	@echo '✅ System reverted to default state.'
 
 clean:
 	@echo 'Cleaning up installed files...'
