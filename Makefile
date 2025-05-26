@@ -27,6 +27,7 @@ install: verify
 reinstall: uninstall install
 
 reset:
+	@echo 'Reverting system to default state...'
 	@bash /usr/local/sbin/zfs-import-scan-enable.sh
 	@echo '✅ System reverted to default state.'
 
